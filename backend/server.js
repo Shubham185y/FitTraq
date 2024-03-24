@@ -3,7 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose'); // Added mongoose for database interaction
-const Meal = require('../backend/api/models/Meal'); // Import the Meal model
+const intakeRoutes = require('../backend/api/routes/intakeRoutes'); // Import intakeRoutes
+const getMeals = require('../backend/api/routes/getMeals')
+const delMeal = require('../backend/api/routes/delMeal')
 
 const app = express();
 const port = 3000;
@@ -11,6 +13,10 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// // Mount the intakeRoutes
+app.post('/api/intakes', intakeRoutes);
+app.get('/api/meals/today', getMeals);
+app.delete('/api/intakes/:id', delMeal);
 // MongoDB URI
 const mongoURI = 'mongodb://0.0.0.0:27017/calorieT';
 
@@ -26,26 +32,6 @@ mongoose.connect(mongoURI)
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
   });
-
-// Endpoint to handle POST request from frontend
-app.post('/api/intakes', async (req, res) => {
-  const { mealType, foodItem, foodInfo } = req.body;
-
-  try {
-    const meal = new Meal({
-      mealType,
-      foodItem,
-      foodInfo
-    });
-
-    await meal.save();
-    console.log('Data saved to MongoDB:', meal);
-    res.status(200).json({ message: 'Data saved to MongoDB' });
-  } catch (error) {
-    console.error('Error saving data to MongoDB:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
 // Default route
 app.get('/', (req, res) => {

@@ -5,9 +5,15 @@ import LogFull from "../src/FullPages/LogFull";
 import HomeFull from "./FullPages/HomeFull";
 import Dashboard from "./FullPages/Dashboard";
 import BmiCalculator from "./components/BmiCalculator"
+
+// const Appstate = createContext();
+
 export default function App() {
+  const [login, setLogin] = useState(false);
+  const [userName, setUserName] = useState("");
   
   return (
+    // <Appstate.Provider value={{login, userName, setLogin, setUserName}} >
     <>
     <Router>
       <Routes>
@@ -19,6 +25,6 @@ export default function App() {
      </Routes>
     </Router>
     </>
-
+    // </Appstate.Provider>
   );
 }

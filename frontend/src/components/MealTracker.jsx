@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios library
-const MealTracker = ({ foodData }) => {
+import axios from 'axios';
+
+const MealTracker = ({ foodData, onItemAdded, updateMeals }) => {
   const [selectedMealType, setSelectedMealType] = useState('');
   const [selectedFoodItem, setSelectedFoodItem] = useState('');
-  const [selectedFoodInfo, setSelectedFoodInfo] = useState(null);
 
   const mealTypes = Array.from(new Set(foodData.map((food) => food.FoodType)));
 
@@ -11,13 +11,11 @@ const MealTracker = ({ foodData }) => {
     const mealType = event.target.value;
     setSelectedMealType(mealType);
     setSelectedFoodItem('');
-    setSelectedFoodInfo(null);
   };
 
   const handleFoodItemChange = (event) => {
     const foodItem = event.target.value;
     setSelectedFoodItem(foodItem);
-    setSelectedFoodInfo(null);
   };
 
   const handleSubmit = async () => {
@@ -28,22 +26,33 @@ const MealTracker = ({ foodData }) => {
   
       if (selectedFood) {
         try {
-          const currentDate = new Date(); // Get current date
+          const currentDate = new Date();
           const response = await axios.post('http://localhost:3000/api/intakes', {
             mealType: selectedMealType,
             foodItem: selectedFoodItem,
             foodInfo: selectedFood.Data,
-            date: currentDate // Include current date in the data
+            date: currentDate
           });
   
+          // Pass the added item to the parent component
+          onItemAdded({
+            mealType: selectedMealType,
+            foodItem: selectedFoodItem,
+            foodInfo: selectedFood.Data,
+            date: currentDate
+          });
+
+          // Update meals in Col1 component
+          updateMeals();
+  
           console.log('Data successfully sent to backend:', response.data);
-          setSelectedFoodInfo(null);
         } catch (error) {
           console.error('Error sending data to backend:', error);
         }
       }
     }
   };
+  
 
   return (
     <div>
@@ -79,7 +88,6 @@ const MealTracker = ({ foodData }) => {
         </>
       )}
       <button onClick={handleSubmit}>Submit</button>
-
     </div>
   );
 };
