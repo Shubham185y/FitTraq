@@ -2,9 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const Meal = require('../models/Meal'); // Assuming you have a Meal model defined
+const app = express();
 
 // Define a route to handle POST requests to '/api/intakes'
 router.post('/api/intakes', async (req, res) => {
+  console.log("HI")
   const { mealType, foodItem, foodInfo, date } = req.body; // Extract date from request body
 
   try {
