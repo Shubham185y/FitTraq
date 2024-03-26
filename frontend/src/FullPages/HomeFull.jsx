@@ -35,9 +35,9 @@ const HomeFull = () => {
                 Try Services
               </a>
             
-              <Link className="login" to={'/signup'}>Login</Link>
+              <Link className="login" to={'/sign-in'}>Login</Link>
               
-              <Link className="signUp" to={'/signup'}>Signup</Link>
+              <Link className="signUp" to={'/sign-up'}>Signup</Link>
             </div>
           </div>
           <div className="content">

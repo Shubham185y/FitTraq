@@ -46,7 +46,7 @@ const Row1 = ({ meals, foodData }) => {
     // Calculate percentages
     const totalSum = totalProteins + totalMineralsSum + totalCarbohydrates;
     const proteinPercentage = (totalProteins / totalSum) * 100;
-    const mineralPercentage = (totalMineralsSum / totalSum) * 100;
+    const mineralPercentage = ((totalMineralsSum / totalSum) * 100);
     const carbohydratePercentage = (totalCarbohydrates / totalSum) * 100;
 
     return {
