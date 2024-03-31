@@ -11,11 +11,14 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.30.7",
+<<<<<<< HEAD
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+=======
+>>>>>>> 85b09d2c022e16586396ba4fac8841d3dc390a28
     "axios": "^1.6.7",
     "chart.js": "^4.4.2",
     "react": "^18.2.0",
