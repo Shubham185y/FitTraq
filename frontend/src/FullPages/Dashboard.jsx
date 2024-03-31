@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import "react-circular-progressbar/dist/styles.css";
 import React, { useState } from "react";
 import Lay from "../components/Lay";
@@ -22,23 +21,6 @@ const Dashboard = () => {
       <Lay />
     </>
   );
-=======
-import 'react-circular-progressbar/dist/styles.css';
-import React, { useState } from 'react';
-import MealTracker from "../components/MealTracker";
-import foodData from "../components/foodData";
-import Lay from "../components/lay";
-import { UserButton } from "@clerk/clerk-react"
-
-const Dashboard = () => {
-  return <>
-          <div>
-            <h1>Meal MealTracker</h1>
-            <UserButton />
-            <Lay/>
-          </div>
-        </>
->>>>>>> 85b09d2c022e16586396ba4fac8841d3dc390a28
 };
 
 export default Dashboard;
