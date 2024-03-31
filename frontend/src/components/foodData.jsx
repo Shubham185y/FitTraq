@@ -387,7 +387,7 @@ const foodData = [
         "Saturated Fat": 1.8
       },
       "Major Minerals": {
-        "Iron": 0.03,
+        "Iron": 0.3,
         "Potassium": 150,
         "Sodium": 50,
         "Zinc": 0.4

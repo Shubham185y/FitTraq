@@ -1,9 +1,13 @@
 import React from "react";
-import HomePage from "../components/HomePage";
 import "./styl.css";
-import { Link } from 'react-router-dom'
-
+import { Link } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
+import { UserButton } from "@clerk/clerk-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faStar } from '@fortawesome/free-regular-svg-icons';
+import { faWeightScale } from '@fortawesome/free-solid-svg-icons';
 const HomeFull = () => {
+  const { user } = useUser();
   return (
     <>
       <div className="main">
@@ -14,7 +18,7 @@ const HomeFull = () => {
               <div className="nav-title">TraqFit</div>
             </div>
             <div className="nav-btn">
-              <label for="nav-check">
+              <label htmlFor="nav-check">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -34,15 +38,26 @@ const HomeFull = () => {
               <a href="#page7" className="hover-underline-animation">
                 Try Services
               </a>
-            
-              <Link className="login" to={'/sign-in'}>Login</Link>
-              
-              <Link className="signUp" to={'/sign-up'}>Signup</Link>
+
+              {user ? ( // Check if user is logged in
+                <Link className="logout">
+                  <UserButton />
+                </Link>
+              ) : (
+                // Display logout button
+                <>
+                  <Link className="login" to={"/sign-in"}>
+                    Login
+                  </Link>
+                  <Link className="signUp" to={"/sign-up"}>
+                    Signup
+                  </Link>
+                </>
+              )}
             </div>
           </div>
           <div className="content">
             <h1>Healthy Life starts with</h1>
-            <br />
             <h3>Healthy Eating</h3>
             <br />
             <p>Start your healthy journey with us .</p>
@@ -51,6 +66,7 @@ const HomeFull = () => {
           </div>
         </div>
         <div className="page2">
+          <div className="to-top"></div>
           <h1>
             Your <span>nutritional</span> Assistant
           </h1>
@@ -181,7 +197,7 @@ const HomeFull = () => {
             </div>
             <div className="blog">
               <img
-                src="https://images.everydayhealth.com/images/us-news-world-report-reveals-best-and-worst-diets-of-2022-1440x810.jpg"
+                src="https://blog.myfitnesspal.com/wp-content/uploads/2020/02/15-Make-Ahead-Breakfasts-Under-300-Calories-9.jpg"
                 alt=""
               />
               <p>
@@ -207,17 +223,17 @@ const HomeFull = () => {
           </div>
           <div className="cardsp6">
             <div className="cardp6">
-              {/* <i className="fa-regular fa-user fa-2xl icon" style="color: #ff0000;"></i> */}
+            <FontAwesomeIcon icon={faUser} className="fa-6x" style={{ color: '#ff0000' }} />
               <h1>30</h1>
               <h2>Million Users</h2>
             </div>
             <div className="cardp6">
-              {/* <i className="fa-solid fa-weight-scale fa-2xl icon" style="color: #ff0000;"></i> */}
+            <FontAwesomeIcon icon={faWeightScale} className="fa-6x" style={{ color: '#ff0000' }} />
               <h1>10</h1>
               <h2>Lakhs Weight Lost</h2>
             </div>
             <div className="cardp6">
-              {/* <i className="fa-regular fa-star fa-2xl icon" style="color: #ff0000;"></i> */}
+            <FontAwesomeIcon icon={faStar} className="fa-6x" style={{ color: '#ff0000' }} />
               <h1>4.5</h1>
               <h2>Star Rating</h2>
             </div>
@@ -235,7 +251,7 @@ const HomeFull = () => {
           <div className="services">
             <div className="service card">
               <img src="../src/assets/BMI cover.jpg" alt="" />
-              <a href="#">Calculate Your BMI</a>
+              <Link to={"/bmi"}>Calculate Your BMI</Link>
             </div>
             <div className="service card">
               <img src="../src/assets/Diet Cover.jpg" alt="" />
@@ -243,7 +259,7 @@ const HomeFull = () => {
             </div>
             <div className="service card">
               <img src="../src/assets/calorie cover.webp" alt="" />
-              <a href="#">Calorie Tracking</a>
+              <Link to={"/dashboard"}>Calorie Tracking</Link>
             </div>
           </div>
         </div>

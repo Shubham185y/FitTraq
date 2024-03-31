@@ -6,15 +6,15 @@ const app = express();
 
 // Define a route to handle POST requests to '/api/intakes'
 router.post('/api/intakes', async (req, res) => {
-  console.log("HI")
-  const { mealType, foodItem, foodInfo, date } = req.body; // Extract date from request body
+  const { mealType, foodItem, foodInfo, date, userId } = req.body; // Extract date from request body
 
   try {
     const meal = new Meal({
+      userId,
       mealType,
       foodItem,
       foodInfo,
-      date // Include date in the meal document
+      date
     });
 
     await meal.save();

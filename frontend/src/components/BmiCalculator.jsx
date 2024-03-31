@@ -34,7 +34,7 @@ function BmiCalculator() {
 
     return (
         <div className="containerbox">
-            <h1>BMI Calculator</h1>
+            <h1 className='bmih1'>BMI Calculator</h1>
             <div>
 			<ReactSpeedometer
                 value={bmiValue}
