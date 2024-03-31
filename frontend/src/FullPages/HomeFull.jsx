@@ -38,7 +38,6 @@ const HomeFull = () => {
               <a href="#page7" className="hover-underline-animation">
                 Try Services
               </a>
-<<<<<<< HEAD
 
               {user ? ( // Check if user is logged in
                 <Link className="logout">
@@ -55,12 +54,6 @@ const HomeFull = () => {
                   </Link>
                 </>
               )}
-=======
-            
-              <Link className="login" to={'/sign-in'}>Login</Link>
-              
-              <Link className="signUp" to={'/sign-up'}>Signup</Link>
->>>>>>> 85b09d2c022e16586396ba4fac8841d3dc390a28
             </div>
           </div>
           <div className="content">
