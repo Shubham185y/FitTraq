@@ -8,10 +8,11 @@
     flex-direction: column;
 } 
 
-h1 { 
-	color: #1eff00f3; 
+.bmih1 { 
+	color: #15ff00f3; 
 	text-align: center; 
-	margin-bottom: 20px; 
+	margin-bottom: 20px;
+	font-size: 34px; 
 } 
 
 .input-container { 

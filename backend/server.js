@@ -6,7 +6,7 @@ const mongoose = require('mongoose'); // Added mongoose for database interaction
 const intakeRoutes = require('../backend/api/routes/intakeRoutes'); // Import intakeRoutes
 const getMeals = require('../backend/api/routes/getMeals')
 const delMeal = require('../backend/api/routes/delMeal')
-
+const last7days = require('../backend/api/routes/last7days')
 const app = express();
 const port = 3000;
 
@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.post('/api/intakes', intakeRoutes);
 app.get('/api/meals/today', getMeals);
 app.delete('/api/intakes/:id', delMeal);
+app.get('/api/meals/last7days', last7days)
 // MongoDB URI
 const mongoURI = 'mongodb://0.0.0.0:27017/calorieT';
 
